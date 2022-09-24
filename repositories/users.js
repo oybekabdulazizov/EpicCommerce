@@ -1,3 +1,4 @@
+const { create } = require('domain');
 const fs = require('fs');
 
 class UsersRepository {
@@ -19,13 +20,28 @@ class UsersRepository {
             encoding: 'utf8'
         }));
     }
+
+    async create(attributes) {
+        const records = await this.getAll();
+        records.push(attributes);
+
+        await this.writeAll(records);
+    }
+
+    async writeAll(records) {
+        await fs.promises.writeFile(this.filename, JSON.stringify(records, null, 2), { encoding: 'utf8' });
+    }
 }
 
 const test = async () => {
     const repo = new UsersRepository('users.json');
 
-    const users = await repo.getAll();
+    await repo.create({
+        email: "test@test.com", 
+        password: "password"
+    });
 
+    const users = await repo.getAll();
     console.log(users);
 }
 
