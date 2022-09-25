@@ -45,6 +45,18 @@ class UsersRepository {
         await this.writeAll(fileteredRecords);
     }
 
+    async update(id, attributes) {
+        const records = await this.getAll();
+        const record = records.find(record => record.id === id);
+
+        if (!record) {
+            throw new Error(`User with id ${id} does not exist.`);
+        }
+
+        Object.assign(record, attributes);
+        await this.writeAll(records);
+    }
+
     randomId() {
         return crypto.randomBytes(4).toString('hex');
     }
@@ -53,14 +65,7 @@ class UsersRepository {
 const test = async () => {
     const repo = new UsersRepository('users.json');
 
-    // await repo.delete('0695ef0d');
-
-    await repo.create({
-        email: "test@test.com", 
-        password: "password01"
-    });
-    const users = await repo.getAll();
-    console.log(users);
+    await repo.update('4caafb76', { password: "password00" });
 }
 
 test();
