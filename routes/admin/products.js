@@ -13,9 +13,13 @@ router.get('/admin/products/new', (req, res) => {
     res.send(productsNewTemplate({}));
 });
 
-router.post('/admin/products/new', [requireTitle, requirePrice], (req, res) => {
+router.post('/admin/products/new', [requireTitle, requirePrice], async (req, res) => {
     const errors = validationResult(req);
-    console.log(errors);
+    if (!errors.isEmpty()) {
+        return res.send(productsNewTemplate({ errors }));
+    }
+
+    const { title, price, image } = req.body;
 
     res.send('Submitted.');
 }),
