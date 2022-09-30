@@ -2,11 +2,11 @@ const layout = require('../layout');
 const { getError } = require('../../helpers');
 
 module.exports = ({ req, errors }) => {
-    return layout({
-        content: `
+  return layout({
+      content: `
       <div class="container">
         <div class="columns is-centered">
-          <div class="column is-one-quarter">
+          <div class="column is-half">
             <form method="POST">
               <h1 class="title">Sign Up</h1>
               <div class="field">
@@ -30,6 +30,6 @@ module.exports = ({ req, errors }) => {
           </div>
         </div>
       </div>
-    `
+      `
     });
 };
