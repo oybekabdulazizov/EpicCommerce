@@ -50,7 +50,7 @@ module.exports = {
                 throw new Error('Invalid password.');
             }
 
-            const validPassword = await usersRepo.correctPassword(user.password, password)
+            const validPassword = await usersRepo.comparePasswords(user.password, password)
             if (!validPassword) {
                 throw new Error('Invalid password.');
             }
