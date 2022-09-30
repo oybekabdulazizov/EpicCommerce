@@ -3,5 +3,10 @@
     "email": "test@test.com",
     "password": "8da3a275b2a4d1421077e0b517ed37bcab66a5e9e7af7fc6762e9790663795482b2682930b25506847ab419991267f28e670328fb9dafbfa27e89129b5394c65.e8f2e09d6db68fa6",
     "id": "ed397cf0"
+  },
+  {
+    "email": "test1@test.com",
+    "password": "96452f7700442fd42b4480e5cb111b108f6c14713cd3b1ee50e9457c2033e8fd612a0af8669669e535ec24f7ec6f8a57c1bc5856e3c611d8c168b38f7c47fb90.eee00f8817f36f83",
+    "id": "e7156d8b"
   }
 ]
