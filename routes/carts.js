@@ -27,7 +27,7 @@ router.post('/cart/products', async (req, res) => {
 
     await cartsRepo.update(cart.id, { items: cart.items });
 
-    res.send('Product has been added to cart.');
+    res.redirect('/cart');
 });
 
 
