@@ -27,8 +27,14 @@ router.post('/admin/products/new',
     handleErrors(productsNewTemplate),
     async (req, res) => {
 
-        console.log(req.file);
-        const image = req.file.buffer.toString('base64') ? buffer.toString('base64') : "";
+        const file = req.file;
+        let image;
+        if (!file) {
+            image = "";
+        } else {
+            image = req.file.buffer.toString('base64')
+        }
+        
         const { title, price } = req.body;
         await productsRepo.create({ title, price, image });
 
